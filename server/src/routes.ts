@@ -12,8 +12,12 @@ import {
   createUserSessionHandler,
   deleteSessionHandler,
   getUserSessionHandler,
+  googleOauthHandler,
 } from "./controllers/session.controller";
-import { createUserHandler } from "./controllers/user.controller";
+import {
+  createUserHandler,
+  getCurrentUser,
+} from "./controllers/user.controller";
 import { requireUser } from "./middleware/requireUser";
 import validateResource from "./middleware/validateResource";
 import {
@@ -33,6 +37,10 @@ function routes(app: Express) {
    */
   //@POST : /api/users
   app.post("/api/users", validateResource(createUserSchema), createUserHandler);
+
+  //@GET : /aip/me;
+  app.get("/api/me", requireUser, getCurrentUser);
+
   /**
    * End user route
    */
@@ -53,6 +61,9 @@ function routes(app: Express) {
 
   //@DELETE : /api/sessions
   app.delete("/api/sessions", requireUser, deleteSessionHandler);
+
+  //@GET : /api/sessions/oauth/google
+  app.get(`/api/sessions/oauth/google`, googleOauthHandler);
   /**
    * End session route
    */

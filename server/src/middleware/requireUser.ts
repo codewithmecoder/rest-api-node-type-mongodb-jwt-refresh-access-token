@@ -6,7 +6,6 @@ export const requireUser = (
   next: NextFunction
 ) => {
   const user = res.locals.user;
-
   if (!user) {
     return res.sendStatus(403);
   }

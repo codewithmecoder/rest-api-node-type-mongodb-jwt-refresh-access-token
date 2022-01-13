@@ -1,5 +1,6 @@
 export default {
   port: process.env.PORT || 1029,
+  origin: "http://localhost:3000",
   dbUri: process.env.DBURI,
   accessTokenTtl: "15m",
   refreshTokenTtl: "1y",
@@ -25,4 +26,9 @@ P8HDNHnIXzYgke2oXLhw5AH6Hp233K9Gx8yfYLWrq9HFxYBA6lkMXYELwdQd0e2l
 6VnGgt7TeIQ8B1PfGQJAQOFws4QB8W+zVxz8KhBEg5BVDUyaaHLA5jVdH5a1qupV
 Q1wwlhtNEGPFff5n/uMh4eSsnMq4oyWFXPG5zOQx/g==
 -----END RSA PRIVATE KEY-----`,
+
+  googleClientId:
+    "1079210133018-m09eh4qi75gku5srfdabs7vfsn36c08d.apps.googleusercontent.com",
+  googleClientSecret: "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",
+  googleOauthRedirectUrl: "http://localhost:1029/api/sessions/oauth/google",
 };
